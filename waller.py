@@ -2,6 +2,11 @@ import platform
 import os
 import random
 
+from linux_wallpaper_setter import LinuxWallpaperSetter
+from mac_os_wallpaper_setter import MacOSWallpaperSetter
+from wallpaper_setter import WallpaperSetter
+from windows_wallpaper_setter import WindowsWallpaperSetter
+
 # The name of the wallpaper folder
 WALLPAPER_FOLDER = 'wallpapers'
 
@@ -16,15 +21,18 @@ def get_random_local_image() -> str:
     return os.path.abspath(WALLPAPER_FOLDER + '/' + image)
 
 
-system = platform.system()
+def get_wallpaper_setter() -> WallpaperSetter:
+    system = platform.system()
 
-if system == 'Windows':
-    print('Windows')
-elif system == 'Darwin':
-    print('MacOS')
-elif system == 'Linux':
-    print('Linux')
-else:
-    print('OS not supported')
+    if system == 'Windows':
+        return WindowsWallpaperSetter()
+    elif system == 'Linux':
+        return LinuxWallpaperSetter()
+    elif system == 'Darwin':
+        return MacOSWallpaperSetter()
+    else:
+        raise Exception('OS is not supported')
 
-change_bg(get_random_local_image())
+
+wallpaper_setter = get_wallpaper_setter()
+wallpaper_setter.set_wallpaper(get_random_local_image())

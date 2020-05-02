@@ -1,7 +1,7 @@
 import abc
 
 
-class WallpaperSetter(abs.ABC):
+class WallpaperSetter:
     @abc.abstractmethod
     def set_wallpaper(self, path) -> None:
         pass
