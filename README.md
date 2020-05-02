@@ -6,6 +6,7 @@ Testing pipenv.
 
 ## :heavy_check_mark: Milestones
 * [ ] Unsplash as a source of wallpapers
-* [ ] Set wallpapers on Windows
+* [x] Local folder as a source of wallpapers
+* [x] Set wallpapers on Windows
 * [ ] Set wallpapers on Linux
 * [ ] Set wallpapers on macOS
